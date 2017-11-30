@@ -1,0 +1,418 @@
+
+@charset "utf-8";
+/*-----------------
+  xxx.com Style
+  reset.css
+  Author:xiaoqiang
+  Mail:78221222@qq.com
+  update:2017
+ -------------------*/
+/*-------------------
+  页-面-元-素(全局)
+  ------------------*/
+
+
+html,body,div,h1,h2,h3,h4,h5,h6,ul,li,ol,dl,dt,dd,blockquote,pre,form,fieldset,table,th,td,span,p,label,input,select,textarea,header,hgroup,main,nav,section,article,aside,footer,
+figure,figcaption,menu,button {
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: "微软雅黑", Arial, sans-serif;
+	font-size: 12px;
+	background-color: #fff;
+}
+
+body.nobg {
+	background: #fff none;
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: normal;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+	display: block;
+}
+
+audio,
+canvas,
+progress,
+video {
+	display: inline-block;
+	vertical-align: baseline;
+}
+
+b,
+strong {
+	font-weight: bold;
+}
+
+button {
+	-webkit-appearance: none;
+	border: 0;
+	background: none;
+	overflow: visible;
+}
+
+button,
+select {
+	text-transform: none;
+}
+
+input {
+	border: none;
+	font-size: 14px;
+}
+
+input,
+select,
+textarea {
+	vertical-align: middle;
+	*font-size: 100%;
+	outline: none;
+	font-family: "微软雅黑";
+}
+
+ul,
+li {
+	list-style: none;
+}
+
+img {
+	border: none;
+	vertical-align: top;
+	-ms-interpolation-mode: bicubic;
+}
+
+i,
+em,
+address,
+th {
+	font-style: normal;
+	font-weight: normal;
+}
+
+td,
+th {
+	font-size: 14px;
+	color: #666;
+}
+
+table {
+	border: 0;
+	border-collapse: collapse;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:link,
+a:visited,
+a:hover {
+	text-decoration: none;
+	outline: 0;
+}
+
+a:active,
+a:focus {
+	outline: none;
+	star: expression(this.onFocus=this.blur());
+}
+
+p {
+	font-size: 14px;
+	line-height: 1.8em;
+}
+
+p.indent {
+	text-indent: 2em;
+}
+
+q:before,
+q:after {
+	content: '';
+}
+	
+/* 浮动 */
+.fl {
+	float: left;
+	display: inline;
+}
+.fr {
+	float: right;
+	display: inline;
+}
+.fn {
+	float: none;
+	display: inline;
+}
+
+/*---------------
+  清-除-浮-动(clear)
+  ----------------*/
+.cl:after {
+	clear: both;
+	display: block;
+	font-size: 0;
+	height: 0;
+	line-height: 0;
+	overflow: hidden;
+	content: ".";
+	visibility: hidden;
+}
+
+.cl {
+	zoom:1;
+}
+
+* html .cl {
+	height: 1%;
+}
+
+
+/*------------ input 重置------------------------------------------------------------------------------------mee----*/
+
+button,
+input[type="reset"],
+input[type="button"],
+input[type="submit"] {
+	line-height: normal !important;
+	cursor: pointer !important;
+}
+
+
+/* 隐藏 */
+
+.hide {
+	display: none;
+}
+
+
+/*-------------------隐藏文字---------------------*/
+
+.hide-text {
+	font: 0/0 a;
+	color: transparent;
+	text-shadow: none;
+	background-color: transparent;
+	border: 0;
+}
+
+
+/*--------------------------------------------------header----------------------------------------mee----------------*/
+
+
+/* 显示 */
+
+.show {
+	display: block;
+}
+
+/* 对齐 */
+
+.ac {
+	text-align: center;
+}
+
+.al {
+	text-align: left;
+}
+
+.ar {
+	text-align: right;
+}
+
+
+/* 多行文本固定高度的垂直居中 */
+
+.v-align {
+	display: table;
+	/* 子元素垂直居中必须 */
+}
+
+.v-align .mc {
+	display: table-cell;
+	/* 垂直居中必须 */
+	vertical-align: middle;
+}
+
+
+/**
+ * 网站公用样式
+ */
+
+.w{
+	width: 1220px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+
+.w100p {
+	width: 100%;
+	min-width: 1220px;
+}
+
+a {
+	color: #666;
+}
+
+a:hover {
+	color: #000;
+}
+
+.mt-5 {
+	margin-top: 5px;
+}
+
+.mt-10 {
+	margin-top: 10px;
+}
+
+.mt-15 {
+	margin-top: 15px;
+}
+
+.mt-20 {
+	margin-top: 20px;
+}
+
+.mt-25 {
+	margin-top: 25px;
+}
+
+.mt-30 {
+	margin-top: 30px;
+}
+
+.mt-40 {
+	margin-top: 40px;
+}
+
+.mt-50 {
+	margin-top: 50px;
+}
+
+.mb-5 {
+	margin-bottom: 5px;
+}
+
+.mb-10 {
+	margin-bottom: 10px;
+}
+
+.mb-15 {
+	margin-bottom: 15px;
+}
+
+.mb-20 {
+	margin-bottom: 20px;
+}
+
+.mb-25 {
+	margin-bottom: 25px;
+}
+
+.mb-30 {
+	margin-bottom: 30px;
+}
+
+.mb-40 {
+	margin-bottom: 40px;
+}
+
+.mb-50 {
+	margin-bottom: 50px;
+}
+
+.ml-5 {
+	margin-left: 5px;
+}
+
+.ml-10 {
+	margin-left: 10px;
+}
+
+.ml-15 {
+	margin-left: 15px;
+}
+
+.ml-20 {
+	margin-left: 20px;
+}
+
+.ml-25 {
+	margin-left: 25px;
+}
+
+.ml-30 {
+	margin-left: 30px;
+}
+
+.ml-40 {
+	margin-left: 40px;
+}
+
+.ml-50 {
+	margin-left: 50px;
+}
+
+.mr-5 {
+	margin-right: 5px;
+}
+
+.mr-10 {
+	margin-right: 10px;
+}
+
+.mr-15 {
+	margin-right: 15px;
+}
+
+.mr-20 {
+	margin-right: 20px;
+}
+
+.mr-25 {
+	margin-right: 25px;
+}
+
+.mr-30 {
+	margin-right: 30px;
+}
+
+.mr-40 {
+	margin-right: 40px;
+}
+
+.mr-50 {
+	margin-right: 50px;
+}
