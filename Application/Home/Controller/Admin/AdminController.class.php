@@ -335,6 +335,11 @@ class AdminController extends Controller {
     }
     
     //测试
+    public function test2(){
+        $this->display("Admin/category/type-modify");
+        
+    }
+    //测试
     public function test(){
     
         $hashval=hash("5","ddddddddddiiuujj");

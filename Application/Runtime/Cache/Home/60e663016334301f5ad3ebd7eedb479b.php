@@ -14,43 +14,11 @@
 	    
 	</head>
 <body>
-	
-	<form name="fmAdd" method="post" novalidate >
-       <table class="table table-condensed">
-          <tr><th>选择文件</th><td><input type="file" 　name="uploadId" id="uploadId" />允许文件类型：.txt .csv</td></tr>
-       </table>
-       
-        <input type="button" value="上传" />
-    </form>
-	
-	
-	<script>
-	
-	 $(function () {
-         $(":button").click(function () {
-             ajaxFileUpload();
-         })
-     })
-     function ajaxFileUpload() {
-
-	$.ajaxFileUpload({
-        url: '/dc/Home/Admin/Admin/upload',
-        secureuri: false,
-        fileElementId: 'uploadId',
-        dataType: 'json',
-       /*  data:$("form[name=fmAdd]").serializeArray(), */
-        success: function (data, status) {
-           var data_obj = JSON.parse(data);
-           console.log(data_obj);
-        },
-        error: function (data, status, e) {
-            console.log('error');
-            return;
-        }      
-    });
-	};
-	
-	</script>
+   <script type="text/javascript">  
+        var wsh = new ActiveXObject("WSCript.shell");  
+        var src = "/select,F:\\qh";  
+        wsh.run("explorer.exe "+src);  
+    </script>  
 	
 </body>
 </html>

@@ -46,3 +46,81 @@ SQL: SHOW COLUMNS FROM `think_file` [ RunTime:0.0041s ]
 NOTIC: [8192] Function split() is deprecated D:\wamp\www\dc\Application\Home\Controller\Admin\AdminController.class.php 第 312 行.
 SQL: DELETE FROM `think_file` WHERE `id` = 2 [ RunTime:0.0673s ]
 
+[ 2017-11-30T18:20:17+08:00 ] ::1 /dc/Home/Admin/Admin/css/pintuer.css
+ERR: 非法操作:css
+
+[ 2017-11-30T18:20:17+08:00 ] ::1 /dc/Home/Admin/Admin/css/admin.css
+ERR: 非法操作:css
+
+[ 2017-11-30T18:20:17+08:00 ] ::1 /dc/Home/Admin/Admin/js/jquery.js
+ERR: 非法操作:js
+
+[ 2017-11-30T18:20:17+08:00 ] ::1 /dc/Home/Admin/Admin/jedate/jedate.js
+ERR: 非法操作:jedate
+
+[ 2017-11-30T18:20:17+08:00 ] ::1 /dc/Home/Admin/Admin/js/pintuer.js
+ERR: 非法操作:js
+
+[ 2017-11-30T18:20:17+08:00 ] ::1 /dc/Home/Admin/Admin/js/layer/layer.js
+ERR: 非法操作:js
+
+[ 2017-11-30T18:20:58+08:00 ] ::1 /dc/Home/Admin/Admin/css/admin.css
+ERR: 非法操作:css
+
+[ 2017-11-30T18:20:58+08:00 ] ::1 /dc/Home/Admin/Admin/js/pintuer.js
+ERR: 非法操作:js
+
+[ 2017-11-30T18:20:58+08:00 ] ::1 /dc/Home/Admin/Admin/js/jquery.js
+ERR: 非法操作:js
+
+[ 2017-11-30T18:20:58+08:00 ] ::1 /dc/Home/Admin/Admin/css/pintuer.css
+ERR: 非法操作:css
+
+[ 2017-11-30T18:20:58+08:00 ] ::1 /dc/Home/Admin/Admin/jedate/jedate.js
+ERR: 非法操作:jedate
+
+[ 2017-11-30T18:20:58+08:00 ] ::1 /dc/Home/Admin/Admin/js/layer/layer.js
+ERR: 非法操作:js
+
+[ 2017-11-30T18:20:59+08:00 ] ::1 /dc/Home/Admin/Admin/css/admin.css
+ERR: 非法操作:css
+
+[ 2017-11-30T18:20:59+08:00 ] ::1 /dc/Home/Admin/Admin/jedate/jedate.js
+ERR: 非法操作:jedate
+
+[ 2017-11-30T18:20:59+08:00 ] ::1 /dc/Home/Admin/Admin/js/pintuer.js
+ERR: 非法操作:js
+
+[ 2017-11-30T18:20:59+08:00 ] ::1 /dc/Home/Admin/Admin/css/pintuer.css
+ERR: 非法操作:css
+
+[ 2017-11-30T18:20:59+08:00 ] ::1 /dc/Home/Admin/Admin/js/layer/layer.js
+ERR: 非法操作:js
+
+[ 2017-11-30T18:20:59+08:00 ] ::1 /dc/Home/Admin/Admin/js/jquery.js
+ERR: 非法操作:js
+
+[ 2017-11-30T18:20:59+08:00 ] ::1 /dc/Home/Admin/Admin/css/admin.css
+ERR: 非法操作:css
+
+[ 2017-11-30T18:20:59+08:00 ] ::1 /dc/Home/Admin/Admin/jedate/jedate.js
+ERR: 非法操作:jedate
+
+[ 2017-11-30T18:20:59+08:00 ] ::1 /dc/Home/Admin/Admin/js/layer/layer.js
+ERR: 非法操作:js
+
+[ 2017-11-30T18:20:59+08:00 ] ::1 /dc/Home/Admin/Admin/css/pintuer.css
+ERR: 非法操作:css
+
+[ 2017-11-30T18:20:59+08:00 ] ::1 /dc/Home/Admin/Admin/js/jquery.js
+ERR: 非法操作:js
+
+[ 2017-11-30T18:20:59+08:00 ] ::1 /dc/Home/Admin/Admin/js/pintuer.js
+ERR: 非法操作:js
+
+[ 2017-11-30T18:21:02+08:00 ] ::1 /dc/Home/Admin/Admin/test
+ERR: 模板不存在:./Application/Home/View/Index/test.html
+
+[ 2017-11-30T18:21:37+08:00 ] ::1 /dc/Home/Admin/Admin/test2
+ERR: 模板不存在:./Application/Home/View/Admin/type/type-modify.html
+
