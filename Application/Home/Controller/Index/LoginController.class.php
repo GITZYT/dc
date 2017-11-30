@@ -35,9 +35,9 @@ class LoginController extends Controller {
             // 验证用户名 对比 密码
             if ($result && $result['password'] == $data['password']) {
                 // 存储session
-                session('uid', $result['id']);          // 当前用户id
-                session('username', $result['username']);   // 当前用户名
-                 session('logintime', time());   // 当前登陆时间
+                session('index_uid', $result['id']);          // 当前用户id
+                session('index_username', $result['username']);   // 当前用户名
+                 session('index_logintime', time());   // 当前登陆时间
 
                 // 更新用户登录信息
                 //$where['id'] = session('uid');
