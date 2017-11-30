@@ -32,7 +32,8 @@ return array(
         '__JS__' => __ROOT__ . '/Public/Js',
         '__CSS__' => __ROOT__ . '/Public/Css',
         '__IMAGE__' => __ROOT__ . '/Public/images',
-        '__DATA__' => __ROOT__ . '/Public/Data'
+        '__DATA__' => __ROOT__ . '/Public/Data',
+        '__UPLOAD__' => __ROOT__ . '/Public/Uploads'
     ),
     
     

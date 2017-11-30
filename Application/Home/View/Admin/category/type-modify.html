@@ -6,69 +6,51 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	    <meta name="renderer" content="webkit">
 	    <title>编辑分类</title>  
-	    <link rel="stylesheet" href="css/pintuer.css">
-	    <link rel="stylesheet" href="css/admin.css">
-	    <script src="js/jquery.js"></script>
-	    <script src="js/pintuer.js"></script>  
-	    <script type="text/javascript" src="js/layer/layer.js" ></script>
-	    <script type="text/javascript" src="jedate/jedate.js" ></script>
+	   <link rel="stylesheet" href="__CSS__/pintuer.css">
+	    <link rel="stylesheet" href="__CSS__/admin.css">
+	    <script src="__JS__/js/jquery-1.8.3.min.js"></script>
+<!-- 	    <script src="__JS__/js/jquery.js"></script> -->
+	    <script src="__JS__/js/ajaxfileupload.js"></script>  
+	    
 	</head>
-	<body>
-		<form method="post" action="" class="ttb">
-		  	<div class="panel admin-panel">
-			    <div class="panel-head"><strong class="icon-reorder"> 编辑分类</strong></div>
-			    <div class="table-responsive">
-				    <table class="table notableborder">
-						<tbody>
-							<tr>
-								<td class="x3 text-right line-height"><span>类别名称：</span></td>
-								<td class="x9"><input type="text" class="input input-auto" value="红头文件" /></td>
-							</tr>
-							<tr>
-								<td class="x3 text-right line-height"></td>
-								<td class="x9 text-left">
-									<a class="button border-main" href="type-list.html">保存</a>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-			    </div>
-		  	</div>
-		</form>
-		<script type="text/javascript">
-			//删除
-			function del(id){
-				if(confirm("您确定要删除吗?")){}
-			}
-			//全选
-			$("#checkall").click(function(){ 
-			  	$("input[name='ckall']").each(function(){
-				  	if (this.checked) {
-					  	this.checked = false;
-				  	}
-				  	else {
-					  	this.checked = true;
-				  	}
-			  	});
-			})
-			//全选删除
-			function DelSelect(){
-				var Checkbox=false;
-				 $("input[name='ckall']").each(function(){
-				  if (this.checked==true) {		
-					Checkbox=true;	
-				  }
-				});
-				if (Checkbox){
-					var t=confirm("您确认要删除选中的内容吗？");
-					if (t==false) return false; 		
-				}
-				else{
-					alert("请选择您要删除的内容!");
-					return false;
-				}
-			}
-		
-		</script>
+<body>
+	
+	<form name="fmAdd" method="post" novalidate >
+       <table class="table table-condensed">
+          <tr><th>选择文件</th><td><input type="file" 　name="uploadId" id="uploadId" />允许文件类型：.txt .csv</td></tr>
+       </table>
+       
+        <input type="button" value="上传" />
+    </form>
+	
+	
+	<script>
+	
+	 $(function () {
+         $(":button").click(function () {
+             ajaxFileUpload();
+         })
+     })
+     function ajaxFileUpload() {
+
+	$.ajaxFileUpload({
+        url: '__APP__/Home/Admin/Admin/upload',
+        secureuri: false,
+        fileElementId: 'uploadId',
+        dataType: 'json',
+       /*  data:$("form[name=fmAdd]").serializeArray(), */
+        success: function (data, status) {
+           var data_obj = JSON.parse(data);
+           console.log(data_obj);
+        },
+        error: function (data, status, e) {
+            console.log('error');
+            return;
+        }      
+    });
+	};
+	
+	</script>
+	
 </body>
 </html>

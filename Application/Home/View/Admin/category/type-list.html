@@ -6,12 +6,13 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	    <meta name="renderer" content="webkit">
 	    <title>分类管理</title>  
-	    <link rel="stylesheet" href="css/pintuer.css">
-	    <link rel="stylesheet" href="css/admin.css">
-	    <script src="js/jquery.js"></script>
-	    <script src="js/pintuer.js"></script>  
-	    <script type="text/javascript" src="js/layer/layer.js" ></script>
-	    <script type="text/javascript" src="jedate/jedate.js" ></script>
+	    <link rel="stylesheet" href="__CSS__/pintuer.css">
+	    <link rel="stylesheet" href="__CSS__/admin.css">
+	     <link rel="stylesheet" href="__CSS__/page.css">
+	    <script src="__JS__/js/jquery.js"></script>
+	    <script src="__JS__/js/pintuer.js"></script>  
+	    <script type="text/javascript" src="__JS__/js/layer/layer.js" ></script>
+	    <script type="text/javascript" src="__JS__/jedate/jedate.js" ></script>
 	</head>
 	<body>
 		<form method="post" action="" class="ttb">
@@ -20,89 +21,78 @@
 			    <div class="padding border-bottom">
 			    	<p>
 			    		<button type="button"  class="button border-green" id="checkall"><span class="icon-check"></span> 全选</button>
-				        <a class="button border-red" href="javascript:void(0)" onclick="DelSelect()"><span class="icon-trash-o"></span> 批量删除</a>
-				        <a class="button border-main" href="type-add.html"><span class="icon-plus"></span> 新增</a>
-			  			<input type="text" class="input input-auto margin-big-left" placeholder="输入类别名称" />
-			  			<a class="button border-main"><span class="icon-search"></span> 搜索</a>
+				        <a class="button border-red" href="javascript:void(0)" onclick="deleteall()"><span class="icon-trash-o"></span> 批量删除</a>
+				        <a class="button border-main" href="__APP__/Home/Admin/Admin/addcategory"><span class="icon-plus"></span> 新增</a>
+			  			<form  id="formid" action="__APP__/Home/Admin/Admin/categorylist" method="post">
+			  			<input type="text" name="name" value="{$name}" class="input input-auto margin-big-left" placeholder="输入类别名称" />
+			  			<!-- <a class="button border-main" href="javascript:search();"><span class="icon-search"></span> 搜索</a> -->
+			  			<button class="button border-main" type="submit">搜索</button>
+			  			</form>
+			  		
 			  		</p>
 			    </div>
 			    <div class="table-responsive">
 				    <table class="table table-hover text-center">
 				      	<tr>
-				      		<th><input type="checkbox" name="ckall" value=""  /></th>
+				      		<th></th>
+<!-- 				      		<th><input type="checkbox" name="ckall" value=""  /></th> -->
 					        <th>序号</th>
 					        <th>类别名称</th> 
 					        <th>类别添加时间</th>       
 					        <th>操作</th>       
-				      	</tr>      
+				      	</tr> 
+				      	  <volist name="list" id="vo" key="k" >     
 				        <tr>
-				        	<td><input type="checkbox" name="ckall" value="" /></td>
-				        	<td>1</td>
-				        	<td>红头文件</td>
-				        	<td>2017-10-22</td>
+				        	<td><input type="checkbox" name="ckall" value="{$vo.id}" /></td>
+				        	<td>{$vo.id}</td>
+				        	<td>{$vo.name}</td>
+				        	<td>{$vo.addtime|date="Y-m-d H:i:s",###}</td>
 				          	<td>
-				          		<form method="post">
+				          		
 			          				<div class="form-group" style="display: inline-block;">
 										<div class="field text-blue border-main" >
 											<div class="button-group radio">
-												<label class="button active">
-													<input name="pintuer" value="1" checked="checked" type="radio"><span class="icon icon-check text-white"></span> 启用
+												<label 
+												<if condition="$vo.isuse eq 1">class="button active"
+												<else/>
+												class="button"
+												</if>
+												
+												>
+													<input name="isuse" value="1" <if condition="$vo.isuse eq 1">checked="checked"</if>  type="radio"> <a href="__APP__/Home/Admin/Admin/qy?id={$vo.id}&isuse=1&item=1"><span class="icon icon-check text-white"></span>启用</a>
 												</label>
-												<label class="button">
-													<input name="pintuer" value="2" type="radio"><span class="icon icon-times"></span> 关闭
+												<label 
+												<if condition="$vo.isuse eq 0">class="button active"
+												<else/>
+												class="button"
+												</if>
+												
+												>
+													<input name="isuse" value="0"  <if condition="$vo.isuse eq 0">checked="checked"</if> type="radio"> <a href="__APP__/Home/Admin/Admin/qy?id={$vo.id}&isuse=0&item=1"><span class="icon icon-times"></span>关闭</a>
 												</label>
 											</div>
 										</div>
 									</div>
-			          			</form>
+			          			
 				          		<div class="button-group"> 
-				          			<a class="button border-main" href="type-modify.html"><span class="icon-edit"></span> 编辑</a> 
-				          			<a class="button border-red" href="javascript:void(0)" onclick="return del()"><span class="icon-trash-o"></span> 删除</a> 
+				          			<a class="button border-main" href="__APP__/Home/Admin/Admin/addcategory?id={$vo.id}"><span class="icon-edit"></span> 编辑</a> 
+				          			<a class="button border-red" href="javascript:void(0)" onclick="deleteall('{$vo.id}')"><span class="icon-trash-o"></span> 删除</a> 
 				          		</div>
 				          	</td>
 				        </tr>
+				        </volist>
 				      	<tr>
-				        	<td colspan="10"><div class="pagelist"> <a href="">上一页</a> <span class="current">1</span><a href="">2</a><a href="">3</a><a href="">下一页</a><a href="">尾页</a> </div></td>
+				      		<td colspan="10">
+				        	<div class="pages">
+				                        {$page}
+			                </div>
+			                </td>
 				      	</tr>
 				    </table>
 			    </div>
 		  	</div>
+		<input type='hidden' value="__APP__/Home/Admin/Admin/delete?item=1" id="deleteurl">
 		</form>
-		
-		<script type="text/javascript">
-			//删除
-			function del(id){
-				if(confirm("您确定要删除吗?")){}
-			}
-			//全选
-			$("#checkall").click(function(){ 
-			  	$("input[name='ckall']").each(function(){
-				  	if (this.checked) {
-					  	this.checked = false;
-				  	}
-				  	else {
-					  	this.checked = true;
-				  	}
-			  	});
-			})
-			//全选删除
-			function DelSelect(){
-				var Checkbox=false;
-				 $("input[name='ckall']").each(function(){
-				  if (this.checked==true) {		
-					Checkbox=true;	
-				  }
-				});
-				if (Checkbox){
-					var t=confirm("您确认要删除选中的内容吗？");
-					if (t==false) return false; 		
-				}
-				else{
-					alert("请选择您要删除的内容!");
-					return false;
-				}
-			}
-		
-		</script>
+	 <script src="__JS__/js/appled.js"></script>
 </body>
 </html>

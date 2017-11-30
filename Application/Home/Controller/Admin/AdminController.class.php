@@ -40,6 +40,50 @@ class AdminController extends Controller {
         $this->assign("list",$list);
         $this->display("Admin/user/user-list");
     }
+    /**
+     * 分类列表
+     */
+    public function categorylist()
+    {
+        //分类列表
+        $m=M('category');
+        $where=array();
+        //名称
+        if(!empty($_POST['name'])){
+            $where['name']=array('like','%'.$_POST['name'].'%');//表达式查询
+            $this->name=$_POST['name'];
+        }
+        
+        $p=getpage($m,$where,4);
+        $list=$m->field(true)->where($where)->order('addtime desc')->select();
+        //         dump($list);
+        $this->page=$p->show();
+        $this->assign("list",$list);
+        $this->display("Admin/category/type-list");
+    }
+    /**
+     * 文件列表
+     */
+    public function filelist()
+    {
+        $flag=$_GET['flag'];
+        //文件列表
+        $m=M('file');
+        $where=array();
+        $where['flag']=$flag;
+        //名称
+        if(!empty($_POST['title'])){
+            $where['title']=array('like','%'.$_POST['title'].'%');//表达式查询
+            $this->title=$_POST['title'];
+        }
+        
+        $p=getpage($m,$where,4);
+        $list=$m->field(true)->where($where)->order('addtime desc')->select();
+        //         dump($list);
+        $this->page=$p->show();
+        $this->assign("list",$list)->assign("flag",$flag);
+        $this->display("Admin/file/file-list");
+    }
     
     /**
      * 用户新增
@@ -85,32 +129,174 @@ class AdminController extends Controller {
         
         }
     }
+    /**
+     * 分类新增
+     */
+    public function addcategory()
+    {
+        // 判断提交方式 做不同处理
+        if (IS_POST) {
+            // 实例化category对象
+            $cat = D('category');
+        
+            // 自动验证 创建数据集
+            if (!$data = $cat->create()) {
+                // 防止输出中文乱码
+                header("Content-type: text/html; charset=utf-8");
+                exit($cat->getError());
+            }
+        
+            //插入数据库
+            if ($id = empty($_POST['id'])?$cat->add($data):$cat->save($data)) {
+             
+                $this->success('保存成功', U('Home/Admin/Admin/categorylist'), 2);
+                
+            } else {
+              
+                $this->error('保存失败');
+            }
+        } else {
+            //              redirect(U('Home/adduser'), 1, '页面跳转中...');
+        
+            $id=$_GET['id'];
+            if(!empty($id)){
+                //处理编辑
+                $cat=M('category');
+                $where['id']=$id;
+                $data=$cat->where($where)->find();
+                //                  var_dump($data);
+                $this->assign('cat',$data);
+                $this->display("Admin/category/type-add");
+            }else{
+                $this->display("Admin/category/type-add");
+            }
+        
+        }
+    }
+    /**
+     * 文件新增
+     */
+    public function addfile()
+    {
+        // 判断提交方式 做不同处理
+        if (IS_POST) {
+            // 实例化file对象
+            $cat = D('file');
+        
+            // 自动验证 创建数据集
+            if (!$data = $cat->create()) {
+                // 防止输出中文乱码
+                header("Content-type: text/html; charset=utf-8");
+                exit($cat->getError());
+            }
+            $upload = new \Think\Upload();// 实例化上传类
+            $upload->maxSize   =     3145728 ;// 设置附件上传大小
+            $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg','txt','csv','doc','xls','xlsx');// 设置附件上传类型
+            //$upload->rootPath  =     './Uploads/'; // 设置附件上传根目录
+            $upload->rootPath = './Public/Uploads/';
+            $upload->savePath  =     ''; // 设置附件上传（子）目录
+            // 上传文件
+            $info   =   $upload->upload();
+           // dump($info);
+            
+            if(!$info) {// 上传错误提示错误信息
+                $this->error($upload->getError());
+            }else{// 上传成功
+                
+                //图片
+                $savename =$info['picurl']['savename'];//名字
+                $savepath =$info['picurl']['savepath'];//名字
+               // dump($savepath.$savename);
+                
+                //文件
+                $filename =$info['fileurl']['savename'];//名字
+                $filepath =$info['fileurl']['savepath'];//名字
+                //dump($filepath.$filename);
+                
+                
+                $data['picurl']=$savepath.$savename;
+                $data['fileurl']=$filepath.$filename;
+                
+                //插入数据库
+                if ($id = empty($_POST['id'])?$cat->add($data):$cat->save($data)) {
+                     
+                     $this->success('保存成功', U('Home/Admin/Admin/filelist?flag='.$data['flag']), 2);
+                
+                } else {
+                
+                    $this->error('保存失败');
+                }
+            }
+            
+        } else {
+            //              redirect(U('Home/adduser'), 1, '页面跳转中...');
+            $id=$_GET['id'];
+            $flag=$_GET['flag'];
+            $this->assign("flag",$flag);
+            if(!empty($id)){
+                //处理编辑
+                $cat=M('file');
+                $where['id']=$id;
+                $data=$cat->where($where)->find();
+                //                  var_dump($data);
+                $this->assign('cat',$data);
+                $this->display("Admin/file/file-add");
+            }else{
+                $this->display("Admin/file/file-add");
+            }
+        }
+    }
     
     /**
      * 是否启用
      */
     public function qy()
     {
-        $uid=$_GET['id'];
+        $id=$_GET['id'];
+        $item=$_GET['item'];
         $isuse=$_GET['isuse'];
+        $flag=$_GET['flag'];
+        $obj=null;
+        if($item==1){
+            $obj=M("category");
+        }else 
+        if($item==2){
+            $obj=M("file");
+        }else {
+            $obj=M('users');
+        }
+        $where['id']=$id;
         
-        $user=M('users');
-        $where['id']=$uid;
-        
-        $user->where($where)->setField('isuse', $isuse);
-        
-        redirect( U('Home/Admin/Admin/userlist'), 0, '页面跳转中...');
+        $obj->where($where)->setField('isuse', $isuse);
+        if($item==1){
+            redirect( U('Home/Admin/Admin/categorylist'), 0, '页面跳转中...');
+        }else 
+        if($item==2){
+            redirect( U('Home/Admin/Admin/filelist?flag='.$flag), 0, '页面跳转中...');
+        }else {
+            redirect( U('Home/Admin/Admin/userlist'), 0, '页面跳转中...');
+        }
+       
     }
     /**
-     * 用户删除
+     * 删除
      */
-    public function deleteuser()
+    public function delete()
     {
+        $item=$_GET["item"];
         // 判断提交方式
         if (IS_POST) {
             $ids=$_POST['ids'];
-            //用户删除
-            $m=M('users');
+             $m=null;
+            if($item==1){
+                $m=M('category');
+            }else 
+            if($item==2){
+                $m=M('file');
+            }else {
+                $m=M('users');
+            }
+           
             if(!empty($ids)){
                 //批量删除
                 $datacheck = array();
@@ -124,12 +310,10 @@ class AdminController extends Controller {
                 if($m!=false){
                     $data['status']=1;
                     $data['msg']="删除成功！";
-                    $data['url']="userlist";//删除成功跳转至用户管理
                     $this->ajaxReturn($data,'JSON');
                 }else{
                     $data['status']=2;
                     $data['msg']="删除失败！";
-                    $data['url']="userlist";//删除成功跳转至用户管理
                     $this->ajaxReturn($data,"JSON");
                 }
             }
