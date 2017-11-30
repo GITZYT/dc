@@ -55,7 +55,7 @@ class LoginController extends Controller {
     /**
      * 用户注册
      */
-    public function register()
+   /*  public function register()
     {
         // 判断提交方式 做不同处理
         if (IS_POST) {
@@ -73,7 +73,7 @@ class LoginController extends Controller {
             if ($id = $user->add($data)) {
                 /* 直接注册用户为超级管理员,子用户采用邀请注册的模式,
                    遂设置公司id等于注册用户id,便于管理公司用户*/
-                $user->where("userid = $id")->setField('companyid', $id);
+               /* $user->where("userid = $id")->setField('companyid', $id);
                 $this->success('注册成功', U('Index/index'), 2);
             } else {
                 $this->error('注册失败');
@@ -81,16 +81,17 @@ class LoginController extends Controller {
         } else {
             $this->display();
         }
-    }
+    } */
 
     /**
      * 用户注销
      */
     public function logout()
     {
+        header("Content-type: text/html; charset=utf-8");
         // 清楚所有session
         session(null);
-        redirect(U('Login/login'), 2, '正在退出登录...');
+        redirect(U('Home/Admin/Login/login'), 2, '正在退出登录...');
     }
 
     /**

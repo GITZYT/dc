@@ -1,0 +1,48 @@
+[ 2017-11-30T10:37:28+08:00 ] ::1 /dc/Home/Admin/Admin/addcategory
+ERR: 模板不存在:./Application/Home/View/Admin/user/type-add.html
+
+[ 2017-11-30T10:38:16+08:00 ] ::1 /dc/Home/Admin/Admin/addcategory
+ERR: 模板不存在:./Application/Home/View/Admin/user/type-add.html
+
+[ 2017-11-30T10:55:13+08:00 ] ::1 /dc/Home/Admin/Admin/deleteuser
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000638s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001178s ]
+ERR: 非法操作:deleteuser
+
+[ 2017-11-30T10:56:17+08:00 ] ::1 /dc/Home/Admin/Admin/delete
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001264s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002137s ]
+NOTIC: [8] Undefined index: item D:\wamp\www\dc\Application\Home\Controller\Admin\AdminController.class.php 第 183 行.
+SQL: SHOW COLUMNS FROM `think_users` [ RunTime:0.0082s ]
+NOTIC: [8192] Function split() is deprecated D:\wamp\www\dc\Application\Home\Controller\Admin\AdminController.class.php 第 197 行.
+SQL: DELETE FROM `think_users` WHERE `id` = 4 [ RunTime:0.0114s ]
+
+[ 2017-11-30T10:56:38+08:00 ] ::1 /dc/Home/Admin/Admin/delete?item=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000609s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000972s ]
+SQL: SHOW COLUMNS FROM `think_category` [ RunTime:0.0072s ]
+NOTIC: [8192] Function split() is deprecated D:\wamp\www\dc\Application\Home\Controller\Admin\AdminController.class.php 第 197 行.
+SQL: DELETE FROM `think_category` WHERE `id` = 4 [ RunTime:0.0959s ]
+
+[ 2017-11-30T16:10:26+08:00 ] ::1 /dc/Home/Admin/Admin/addfile
+ERR: 1062:Duplicate entry '0' for key 'PRIMARY'
+ [ SQL语句 ] : INSERT INTO `think_file` (`id`,`title`,`isuse`,`type`,`addtime`,`islock`) VALUES ('0','33','0','3','1512029426','0')
+
+[ 2017-11-30T16:14:27+08:00 ] ::1 /dc/Home/Admin/Admin/addfile
+ERR: 1062:Duplicate entry '0' for key 'PRIMARY'
+ [ SQL语句 ] : INSERT INTO `think_file` (`id`,`title`,`isuse`,`type`,`addtime`,`islock`) VALUES ('0','2','0','3','1512029667','0')
+
+[ 2017-11-30T16:52:47+08:00 ] ::1 /dc/Home/Admin/Admin/filelist?flag=1
+ERR: 模板不存在:./Application/Home/View/Admin/file/type-list.html
+
+[ 2017-11-30T16:59:30+08:00 ] ::1 /dc/Home/Admin/Admin/delete?item=2
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000851s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001330s ]
+SQL: SHOW COLUMNS FROM `think_file` [ RunTime:0.0041s ]
+NOTIC: [8192] Function split() is deprecated D:\wamp\www\dc\Application\Home\Controller\Admin\AdminController.class.php 第 312 行.
+SQL: DELETE FROM `think_file` WHERE `id` = 2 [ RunTime:0.0673s ]
+

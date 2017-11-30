@@ -324,6 +324,16 @@ class AdminController extends Controller {
         
     }
     
+    /**
+     * 缓存清除
+     */
+    public function clearcatche()
+    {
+        header("Content-type: text/html; charset=utf-8");
+       s(null);
+       redirect( U('Home/Admin/Admin/index'), 0, '页面跳转中...');
+    }
+    
     //测试
     public function test(){
     
