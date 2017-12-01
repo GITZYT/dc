@@ -16,7 +16,7 @@
 <div class="fd-header w100p border-b-1">
 	<div class="fd-hd-top w">
 		<span class="fd-top-user">{$username}，您好</span>
-		<a href="#" class="fd-top-cancel">注销</a>
+		<a href="__APP__/Home/Index/Login/logout" class="fd-top-cancel">注销</a>
 	</div>
 	<div class="fd-hd-tit w">
 		<h1><img src="__PUBLIC__/index/images/i-footer-logo.png"></h1>
@@ -26,8 +26,8 @@
 <div class="file-main w100p">
 	<div class="down-con w cl">
 		<div class="file-tab-hd">
-			<a href="download.html" class="active">下载模板</a>
-			<a href="file.html">我的文件</a>
+			<a href="__APP__/Home/Index/Index/index" class="active">下载模板</a>
+			<a href="__APP__/Home/Index/Index/index?item=1">我的文件</a>
 		</div>
 		
 		<div class="down-container">
@@ -40,14 +40,14 @@
 						
 						<div class="tree">
 						    <div class="tree_box">
-						        <h3><i class="fd-arrow"></i>Word</h3>
-						        <ul class="tree_one" style="height: 0; overflow: hidden;">
+						        <h3><i class="fd-arrow"></i><a href="__APP__/Home/Index/Index/index?type=2">Word</a></h3>
+						       <!--  <ul class="tree_one" style="height: 0; overflow: hidden;">
 						            <li></li>
-						        </ul>
+						        </ul> -->
 						    </div>
 						    <div class="tree_box">
-						        <h3><i class="fd-arrow"></i>excel</h3>
-						        <ul class="tree_one">
+						        <h3><i class="fd-arrow"></i><a href="__APP__/Home/Index/Index/index?type=1">excel</a></h3>
+						        <!-- <ul class="tree_one">
 						            <li>
 						                <h4><i class="fd-arrow"></i>空白表格</h4>
 						                <ul class="tree_two">
@@ -72,11 +72,11 @@
 						                   </li>
 						                </ul>
 						            </li>
-						        </ul>
+						        </ul> -->
 						    </div>
 						    <div class="tree_box">
-						        <h3><i class="fd-arrow"></i>ppt</h3>
-						        <ul class="tree_one">
+						        <h3><i class="fd-arrow"></i><a href="__APP__/Home/Index/Index/index?type=3">ppt</a></h3>
+						        <!-- <ul class="tree_one">
 						            <li>
 						                <h4><i class="fd-arrow"></i>红头文件</h4>
 						                <ul class="tree_two" style="height: 0; overflow: hidden;">
@@ -84,74 +84,13 @@
 						                </ul>
 						            </li>
 						            
-						        </ul>
+						        </ul> -->
 						    </div>
 						</div>
 						
 					</div><!--down-l-nav end-->
 				
 				</div><!--down-l-part1 end-->
-				
-				<div class="down-l-part1">
-					<h2 class="down-left-tit">红头文件</h2>
-				
-					<div class="down-l-nav">
-						<div class="down-l-navall"><i class="fd-arrow fd-arrow-down"></i>全部</div>
-						
-						<div class="tree">
-						    <div class="tree_box">
-						        <h3><i class="fd-arrow"></i>Word</h3>
-						        <ul class="tree_one" style="height: 0; overflow: hidden;">
-						            <li></li>
-						        </ul>
-						    </div>
-						    <div class="tree_box">
-						        <h3><i class="fd-arrow"></i>excel</h3>
-						        <ul class="tree_one">
-						            <li>
-						                <h4><i class="fd-arrow"></i>空白表格</h4>
-						                <ul class="tree_two">
-						                    <li>
-						                    	<a href="#">空白表格</a> 
-						                    </li>
-						                </ul>
-						            </li>
-						            <li>
-						                <h4><i class="fd-arrow"></i>预算表单</h4>
-						                <ul class="tree_two">
-						                    <li>
-						                    	<a href="#">预算表单</a> 
-						                    </li>
-						                </ul>
-						            </li>
-						            <li>
-						                <h4><i class="fd-arrow"></i>个性风格</h4>
-						                <ul class="tree_two">
-						                    <li>
-						                    	<a href="#">富地公司模板</a> 
-						                   </li>
-						                </ul>
-						            </li>
-						        </ul>
-						    </div>
-						    <div class="tree_box">
-						        <h3><i class="fd-arrow"></i>ppt</h3>
-						        <ul class="tree_one">
-						            <li>
-						                <h4><i class="fd-arrow"></i>红头文件</h4>
-						                <ul class="tree_two" style="height: 0; overflow: hidden;">
-						                    <li></li>
-						                </ul>
-						            </li>
-						            
-						        </ul>
-						    </div>
-						</div>
-						
-					</div><!--down-l-nav end-->
-				
-				</div><!--down-l-part1 end-->
-				
 				
 				
 				
@@ -159,7 +98,22 @@
 			
 			<div class="down-right fl">
 				<ul class="down-list">
+					
+					
+					
+					<volist name="list" id="cat" key="k">
 					<li>
+						<div class="down-pic">
+							<a href="#">
+								<img src="__UPLOAD__/{$cat.picurl}">
+							</a>
+						</div>
+						<p>{$cat.title}</p>
+						<div class="dowb-btn"><a href="__UPLOAD__/{$cat.picurl}" target="_blank">下载</a></div>
+					</li>
+					</volist>
+					
+					<!-- <li>
 						<div class="down-pic">
 							<a href="#">
 								<img src="__PUBLIC__/index/images/down-pic_03.png">
@@ -230,7 +184,7 @@
 						</div>
 						<p>高举邓小平伟大理论</p>
 						<div class="dowb-btn"><a href="#">下载</a></div>
-					</li>
+					</li> -->
 				</ul>
 				
 			</div><!--down-right end-->

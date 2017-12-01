@@ -6,28 +6,31 @@
 <meta name="renderer" content="webkit">
 <title>我的文件</title>
 
-<link rel="stylesheet" type="text/css" href="css/pc-reset.css" />
-<link rel="stylesheet" type="text/css" href="css/master.css" />
-<script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/index/css/pc-reset.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/index/css/master.css" />
+ <link rel="stylesheet" href="__CSS__/page.css">
+<script src="__PUBLIC__/index/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="__PUBLIC__/index/js/fd-common.js" type="text/javascript"></script>
+
 
 </head>
 
 <body>
 <div class="fd-header w100p border-b-1">
 	<div class="fd-hd-top w">
-		<span class="fd-top-user">张亮，您好</span>
-		<a href="#" class="fd-top-cancel">注销</a>
+		<span class="fd-top-user">{$username}，您好</span>
+		<a href="__APP__/Home/Index/Login/logout" class="fd-top-cancel">注销</a>
 	</div>
 	<div class="fd-hd-tit w">
-		<h1><img src="images/i-footer-logo.png"></h1>
+		<h1><img src="__PUBLIC__/index/images/i-footer-logo.png"></h1>
 	</div>
 </div><!--fd-header end-->
 
 <div class="file-main w100p">
 	<div class="file-con w">
 		<div class="file-tab-hd">
-			<a href="download.html">下载模板</a>
-			<a href="file.html" class="active">我的文件</a>
+			<a href="__APP__/Home/Index/Index/index" >下载模板</a>
+			<a href="__APP__/Home/Index/Index/index?item=1" class="active">我的文件</a>
 		</div>
 		
 		<div class="file-tab-bd">
@@ -38,16 +41,30 @@
 				<span class="file-sp4">下载</span>
 			</div>
 			<ul class="file-tab-list">
+			
+			<volist name="list" id="cat" key="k">
 				<li>
-					<span class="file-sp1"><i><img src="images/file-icon1.png"></i></span>
-					<span class="file-sp2">高举邓小平伟大理论,xlsx</span>
-					<span class="file-sp3">2017-08-08 23:59:59</span>
+					<span class="file-sp1"><i>
+					
+					<if condition="$cat.type eq 2">
+					<img src="__PUBLIC__/index/images/file-icon1.png">
+					<elseif condition="$cat.type eq 1"/>
+					<img src="__PUBLIC__/index/images/file-icon2.png">
+					<else/>
+					<img src="__PUBLIC__/index/images/file-icon3.png">
+					</if>
+					
+					</i></span>
+					<span class="file-sp2">{$cat.title}</span>
+					<span class="file-sp3">{$cat.addtime|date="Y-m-d H:i:s",###}</span>
 					<span class="file-sp4">
-						<a href="#">下载</a>
-						<a href="#">打开文件夹</a>
+						<a href="__UPLOAD__/{$cat.fileurl}" target="_blank" style="margin: 0 64px;">下载</a>
+						<!-- <a href="#">打开文件夹</a> -->
 					</span>
 				</li>
-				<li>
+				</volist>
+				
+				<!-- <li>
 					<span class="file-sp1"><i><img src="images/file-icon2.png"></i></span>
 					<span class="file-sp2">高举邓小平伟大理论,xlsx</span>
 					<span class="file-sp3">2017-08-08 23:59:59</span>
@@ -91,29 +108,26 @@
 						<a href="#">下载</a>
 						<a href="#">打开文件夹</a>
 					</span>
-				</li>
+				</li> -->
 			</ul>
 		</div>
 		
 		<div class="file-upload">
-			<a href="#">上传新文件</a>
+			<a href="__APP__/Home/Admin/Admin/addfile?flag=3">上传新文件</a>
 		</div>
 		<div class="file-page">
-			<span><a href="#" class="file-page-up">&lt;</a></span>
-			<a href="#">1</a>
-			<a href="#" class="active">2</a>
-			<a href="#">3</a>
-			<a href="#">4</a>
-			<a href="#">5</a>
-			<span>...</span>
-			<a href="#">7</a>
-			<span><a href="#" class="file-page-next">&gt;</a></span>
+			<tr>
+	      		<td colspan="10">
+	        	<div class="pages">
+	                        {$page}
+                </div>
+                </td>
+	      	</tr>
 			
 		</div>
 	</div><!--file-con end-->
 	
 </div><!--login-main end-->
-
-
+    
 </body>
 </html>
