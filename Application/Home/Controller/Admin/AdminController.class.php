@@ -199,7 +199,7 @@ class AdminController extends Controller {
             $info   =   $upload->upload();
            // dump($info);
             
-            if(!$info) {// 上传错误提示错误信息
+            if(empty($data['id'])&&!$info) {// 上传错误提示错误信息
                 $this->error($upload->getError());
             }else{// 上传成功
                 

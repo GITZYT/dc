@@ -8,6 +8,7 @@
 	    <title><?php echo ($flag==1?"普通文件列表":"红头文件列表"); ?></title>  
 	    <link rel="stylesheet" href="/dc/Public/Css/pintuer.css">
 	    <link rel="stylesheet" href="/dc/Public/Css/admin.css">
+	     <link rel="stylesheet" href="/dc/Public/Css/page.css">
 	    <script src="/dc/Public/Js/js/jquery.js"></script>
 	    <script src="/dc/Public/Js/js/pintuer.js"></script>  
 	    <script type="text/javascript" src="/dc/Public/Js/js/layer/layer.js" ></script>
