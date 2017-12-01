@@ -91,7 +91,7 @@ class LoginController extends Controller {
         header("Content-type: text/html; charset=utf-8");
         // 清楚所有session
         session(null);
-        redirect(U('Home/Admin/Login/login'), 2, '正在退出登录...');
+        redirect(U('Home/Index/Login/login'), 2, '正在退出登录...');
     }
 
     /**

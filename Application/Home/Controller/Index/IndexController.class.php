@@ -7,6 +7,39 @@ class IndexController extends Controller {
         $username=session('index_username');
         $this->assign("username",$username);
         
-        $this->display("Index/download");
+        $item=$_GET['item'];//1我的文件标识 2模板文件
+        
+        
+        //文件列表
+        $m=M('file');
+        $where=array();
+       
+        //文件类型
+        $type=$_GET['type'];
+        if(!empty($type)){
+            $where['type']=$type;
+            $this->type=$type;
+        }
+        //名称
+        if(!empty($_POST['title'])){
+            $where['title']=array('like','%'.$_POST['title'].'%');//表达式查询
+            $this->title=$_POST['title'];
+        }
+        
+        $p=getpage($m,$where,8);
+        $list=$m->field(true)->where($where)->order('addtime desc')->select();
+        //         dump($list);
+        $this->page=$p->show();
+        $this->assign("list",$list);
+        
+        
+        
+        if($item==1){
+            $this->assign("item",$item);
+            $this->display("Index/file");
+        }else {
+            $this->display("Index/download");
+        }
+      
     }
 }

@@ -5,7 +5,11 @@
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	    <meta name="renderer" content="webkit">
-	    <title><?php echo ($flag==1?"新增普通文件":"新增红头文件"); ?></title>  
+	    <title>
+	    <?php if($flag == 3): ?>新增文件
+	    <?php else: ?>
+	    <?php echo ($flag==1?"新增普通文件":"新增红头文件"); endif; ?>
+	    </title>  
 	   <link rel="stylesheet" href="/dc/Public/Css/pintuer.css">
 	    <link rel="stylesheet" href="/dc/Public/Css/admin.css">
 	    <script src="/dc/Public/Js/js/jquery.js"></script>
@@ -14,14 +18,17 @@
 	    <script type="text/javascript" src="/dc/Public/Js/jedate/jedate.js" ></script>
 	</head>
 	<body>
-		<form id="formid" method="POST" action="/dc/Home/Admin/Admin/addfile?id=5&amp;flag=2" enctype="multipart/form-data" class="ttb">
+		<form id="formid" method="POST" action="/dc/Home/Admin/Admin/addfile?flag=3" enctype="multipart/form-data" class="ttb">
 		<input type="hidden" name="id" value="<?php echo ($cat["id"]); ?>" />
 		<input type="hidden" name="flag" value="<?php echo ($flag); ?>" />
 		  	<div class="panel admin-panel">
 			    <div class="panel-head"><strong class="icon-reorder"> 
+			    
 			  	<?php if($flag == 1): echo ($flag==1&&$cat?"编辑普通文件":"新增普通文件"); ?>
-				<?php else: ?>
-				 <?php echo ($flag==2&&$cat?"编辑红头文件":"新增红头文件"); endif; ?>
+				<?php elseif($flag == 2): ?>
+				 <?php echo ($flag==2&&$cat?"编辑红头文件":"新增红头文件"); ?>
+				 <?php else: ?>
+				 新增文件<?php endif; ?>
 			    
 			    </strong></div>
 			    <div class="table-responsive">

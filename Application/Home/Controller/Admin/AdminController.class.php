@@ -205,12 +205,12 @@ class AdminController extends Controller {
                 
                 //图片
                 $savename =$info['picurl']['savename'];//名字
-                $savepath =$info['picurl']['savepath'];//名字
+                $savepath =$info['picurl']['savepath'];//路径
                // dump($savepath.$savename);
                 
                 //文件
                 $filename =$info['fileurl']['savename'];//名字
-                $filepath =$info['fileurl']['savepath'];//名字
+                $filepath =$info['fileurl']['savepath'];//路径
                 //dump($filepath.$filename);
                 
                 
@@ -220,7 +220,11 @@ class AdminController extends Controller {
                 //插入数据库
                 if ($id = empty($_POST['id'])?$cat->add($data):$cat->save($data)) {
                      
-                     $this->success('保存成功', U('Home/Admin/Admin/filelist?flag='.$data['flag']), 2);
+                    if($data['flag']==3){
+                        $this->success('保存成功', U('Home/Index/Index/index?item=1'), 2);
+                    }else{
+                        $this->success('保存成功', U('Home/Admin/Admin/filelist?flag='.$data['flag']), 2);
+                    }
                 
                 } else {
                 

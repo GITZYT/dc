@@ -5,7 +5,13 @@
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	    <meta name="renderer" content="webkit">
-	    <title>{$flag==1?"新增普通文件":"新增红头文件"}</title>  
+	    <title>
+	    <if condition="$flag eq 3" >
+	    		新增文件
+	    <else/>
+	    {$flag==1?"新增普通文件":"新增红头文件"}
+	    </if>
+	    </title>  
 	   <link rel="stylesheet" href="__CSS__/pintuer.css">
 	    <link rel="stylesheet" href="__CSS__/admin.css">
 	    <script src="__JS__/js/jquery.js"></script>
@@ -19,10 +25,13 @@
 		<input type="hidden" name="flag" value="{$flag}" />
 		  	<div class="panel admin-panel">
 			    <div class="panel-head"><strong class="icon-reorder"> 
+			    
 			  	<if condition="$flag eq 1">
 			  	 {$flag==1&&$cat?"编辑普通文件":"新增普通文件"}
-				<else/>
+				<elseif condition="$flag eq 2" />
 				 {$flag==2&&$cat?"编辑红头文件":"新增红头文件"}
+				 <else/>
+				 新增文件
 				</if>
 			    
 			    </strong></div>

@@ -99,6 +99,7 @@ class LoginController extends Controller {
      */
     public function verify()
     {
+        ob_clean();
         // 实例化Verify对象
         $verify = new \Think\Verify();
 
