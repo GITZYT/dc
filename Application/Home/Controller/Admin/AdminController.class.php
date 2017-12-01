@@ -191,7 +191,7 @@ class AdminController extends Controller {
             }
             $upload = new \Think\Upload();// 实例化上传类
             $upload->maxSize   =     3145728 ;// 设置附件上传大小
-            $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg','txt','csv','doc','xls','xlsx');// 设置附件上传类型
+            $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg','txt','csv','doc','xls','ppt','docx','xlsx');// 设置附件上传类型
             //$upload->rootPath  =     './Uploads/'; // 设置附件上传根目录
             $upload->rootPath = './Public/Uploads/';
             $upload->savePath  =     ''; // 设置附件上传（子）目录
@@ -213,9 +213,13 @@ class AdminController extends Controller {
                 $filepath =$info['fileurl']['savepath'];//路径
                 //dump($filepath.$filename);
                 
-                
-                $data['picurl']=$savepath.$savename;
-                $data['fileurl']=$filepath.$filename;
+                if($savepath){
+                    $data['picurl']=$savepath.$savename;
+                }
+               if($filepath){
+                   $data['fileurl']=$filepath.$filename;
+               }
+               
                 
                 //插入数据库
                 if ($id = empty($_POST['id'])?$cat->add($data):$cat->save($data)) {

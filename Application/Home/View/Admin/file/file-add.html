@@ -91,6 +91,9 @@
 								<td class="x3 text-right line-height"><span>上传文件：</span></td>
 								<td class="x9">
 									<input onchange="delfi()" type="file" name="fileurl" class="input input-auto" /><span id="filename">{$cat.fileurl}</span>
+									<notempty name="cat">
+									<input type="hidden" name="fileurl" value="{$cat.fileurl}" />
+									</notempty>
 								</td>
 							</tr>
 							<tr>

@@ -14,7 +14,7 @@
 	    <script type="text/javascript" src="/dc/Public/Js/jedate/jedate.js" ></script>
 	</head>
 	<body>
-		<form id="formid" method="POST" action="/dc/Home/Admin/Admin/adduser" class="ttb">
+		<form id="formid" method="POST" action="/dc/Home/Admin/Admin/adduser?id=13" class="ttb">
 		<input type="hidden" name="id" value="<?php echo ($user["id"]); ?>" />
 		  	<div class="panel admin-panel">
 			    <div class="panel-head"><strong class="icon-reorder"> <?php echo ($user?"编辑用户":"新增用户"); ?></strong></div>
