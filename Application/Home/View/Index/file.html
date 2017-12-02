@@ -30,13 +30,13 @@
 	<div class="file-con w">
 		<div class="file-tab-hd">
 			<a href="__APP__/Home/Index/Index/index" >下载模板</a>
-			<a href="__APP__/Home/Index/Index/index?item=1" class="active">我的文件</a>
+			<a href="__APP__/Home/Index/Index/flist?item=1" class="active">我的文件</a>
 		</div>
 		
 		<div class="file-tab-bd">
 			<div class="file-tab-tit">
 				<span class="file-sp1">文件类型</span>
-				<span class="file-sp2">文件名</span>
+				<span class="file-sp2">标题</span>
 				<span class="file-sp3">最后修改时间</span>
 				<span class="file-sp4">下载</span>
 			</div>
@@ -58,7 +58,11 @@
 					<span class="file-sp2">{$cat.title}</span>
 					<span class="file-sp3">{$cat.addtime|date="Y-m-d H:i:s",###}</span>
 					<span class="file-sp4">
+						<empty name="cat.fileurl">
+						<a href="javascript:notice();" target="_blank" style="margin: 0 64px;">下载</a>
+						<else /> 
 						<a href="__UPLOAD__/{$cat.fileurl}" target="_blank" style="margin: 0 64px;">下载</a>
+						</empty> 
 						<!-- <a href="#">打开文件夹</a> -->
 					</span>
 				</li>
@@ -128,6 +132,10 @@
 	</div><!--file-con end-->
 	
 </div><!--login-main end-->
-    
+    <script>
+    function notice(){
+    	alert("请上传文件！");
+    }
+    </script>
 </body>
 </html>

@@ -283,17 +283,18 @@
 	width: 1032px;
 }
 .down-list li{
-	float: left;
-	width: 226px;
-	margin: 32px 32px 0 0;
-	text-align: center;
+	    float: left;
+    width: 214px;
+    margin: 32px 32px 0 8px;
+    text-align: center;
 }
+
 .down-list li:nth-child(4n){
 	margin-right: 0;
 }
 .down-pic,
 .down-pic img{
-	width: 226px;
+	width: 220px;
 	height: 328px;
 }
 .down-pic{

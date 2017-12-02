@@ -1906,5 +1906,23 @@ class Model {
             $this->$name = $value;
         return $this;
     }
+    
+    ///custom function
+    //查询所有分类信息
+    public function allCategory($field='*'){
+        return $this->field($field)->select();
+    }
 
+    //创建组织结构分类树（即无限极分类）
+    public function tree(&$list,$pid=0,$level=0,$html='--'){
+        static $tree = array();
+        foreach($list as $v){
+            if($v['pid'] == $pid){
+                $v['html'] = str_repeat($html,$level);
+                $tree[] = $v;
+                $this->tree($list,$v['id'],$level+1);
+            }
+        }
+        return $tree;
+    }
 }

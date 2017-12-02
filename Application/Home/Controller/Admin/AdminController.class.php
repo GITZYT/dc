@@ -158,10 +158,19 @@ class AdminController extends Controller {
         } else {
             //              redirect(U('Home/adduser'), 1, '页面跳转中...');
         
+            //树形分类
+            $cat=D('category');
+            $field = array('id','name','pid','level');
+            $row = $cat->allCategory($field );
+            //生成无限极分类
+            $list=$cat->tree($row);
+            //dump($list);
+            $this->assign('row',$list);
+            
             $id=$_GET['id'];
             if(!empty($id)){
                 //处理编辑
-                $cat=M('category');
+                //$cat=M('category');
                 $where['id']=$id;
                 $data=$cat->where($where)->find();
                 //                  var_dump($data);
@@ -173,6 +182,9 @@ class AdminController extends Controller {
         
         }
     }
+  
+    
+    
     /**
      * 文件新增
      */
@@ -238,6 +250,16 @@ class AdminController extends Controller {
             
         } else {
             //              redirect(U('Home/adduser'), 1, '页面跳转中...');
+            
+            //树形分类
+            $cat=D('category');
+            $field = array('id','name','pid','level');
+            $row = $cat->allCategory($field );
+            //生成无限极分类
+            $list=$cat->tree($row);
+            //dump($list);
+            $this->assign('row',$list);
+            
             $id=$_GET['id'];
             $flag=$_GET['flag'];
             $this->assign("flag",$flag);

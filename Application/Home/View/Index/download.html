@@ -5,11 +5,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="renderer" content="webkit">
 <title>下载模板</title>
-
+	    
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/index/css/pc-reset.css" />
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/index/css/master.css" />
 <script src="__PUBLIC__/index/js/jquery-1.9.1.min.js" type="text/javascript"></script>
 <script src="__PUBLIC__/index/js/fd-common.js" type="text/javascript"></script>
+ 
 </head>
 
 <body>
@@ -27,7 +28,7 @@
 	<div class="down-con w cl">
 		<div class="file-tab-hd">
 			<a href="__APP__/Home/Index/Index/index" class="active">下载模板</a>
-			<a href="__APP__/Home/Index/Index/index?item=1">我的文件</a>
+			<a href="__APP__/Home/Index/Index/flist?item=1">我的文件</a>
 		</div>
 		
 		<div class="down-container">
@@ -37,66 +38,48 @@
 				
 					<div class="down-l-nav">
 						<div class="down-l-navall"><i class="fd-arrow fd-arrow-down"></i>全部</div>
-						
 						<div class="tree">
+						<volist name="row" id="val">  
 						    <div class="tree_box">
-						        <h3><i class="fd-arrow"></i><a href="__APP__/Home/Index/Index/index?type=2">Word</a></h3>
-						       <!--  <ul class="tree_one" style="height: 0; overflow: hidden;">
-						            <li></li>
-						        </ul> -->
+						    	<if condition="$val.level eq 0">
+						        <h3><i class="fd-arrow"></i>{$val.name}</h3>
+						        <ul class="tree_one">
+						        	<volist name="row" id="v">
+						        	<if condition="$val.id eq $v['pid']">
+						            <li>
+						                <!-- <h4><a href="__APP__/Home/Index/Index/index?type={$v.id}">{$v.name}</a></h4> -->
+						                <if condition="$v.level eq 1">
+							                 	<h4><i class="fd-arrow"></i>{$v.name}</h4>
+								                <ul class="tree_two">
+								                	<volist name="row" id="v2">
+								                	<if condition="$v.id eq $v2['pid']">
+								                    <li>
+								                    	<a href="__APP__/Home/Index/Index/flist?type={$v2.id}" target="right">{$v2.name}</a> 
+								                    </li>
+								                    </if>
+								                    </volist>
+							                   </ul>
+						                </if>
+						            </li>
+						            </if>
+					            	</volist>
+						        </ul>
+					            </if>
 						    </div>
-						    <div class="tree_box">
-						        <h3><i class="fd-arrow"></i><a href="__APP__/Home/Index/Index/index?type=1">excel</a></h3>
-						        <!-- <ul class="tree_one">
-						            <li>
-						                <h4><i class="fd-arrow"></i>空白表格</h4>
-						                <ul class="tree_two">
-						                    <li>
-						                    	<a href="#">空白表格</a> 
-						                    </li>
-						                </ul>
-						            </li>
-						            <li>
-						                <h4><i class="fd-arrow"></i>预算表单</h4>
-						                <ul class="tree_two">
-						                    <li>
-						                    	<a href="#">预算表单</a> 
-						                    </li>
-						                </ul>
-						            </li>
-						            <li>
-						                <h4><i class="fd-arrow"></i>个性风格</h4>
-						                <ul class="tree_two">
-						                    <li>
-						                    	<a href="#">富地公司模板</a> 
-						                   </li>
-						                </ul>
-						            </li>
-						        </ul> -->
-						    </div>
-						    <div class="tree_box">
-						        <h3><i class="fd-arrow"></i><a href="__APP__/Home/Index/Index/index?type=3">ppt</a></h3>
-						        <!-- <ul class="tree_one">
-						            <li>
-						                <h4><i class="fd-arrow"></i>红头文件</h4>
-						                <ul class="tree_two" style="height: 0; overflow: hidden;">
-						                    <li></li>
-						                </ul>
-						            </li>
-						            
-						        </ul> -->
-						    </div>
+						   </volist> 
 						</div>
 						
 					</div><!--down-l-nav end-->
 				
 				</div><!--down-l-part1 end-->
 				
-				
-				
 			</div><!--down-left end-->
 			
-			<div class="down-right fl">
+			<div class="down-right fl" style="height:905px;">
+			<iframe scrolling="no" style="border:0px;" rameborder="0" src="__APP__/Home/Index/Index/flist" name="right" width="100%" height="100%"></iframe>
+			</div>
+			
+			<!-- <div class="down-right fl">
 				<ul class="down-list">
 					
 					
@@ -113,81 +96,9 @@
 					</li>
 					</volist>
 					
-					<!-- <li>
-						<div class="down-pic">
-							<a href="#">
-								<img src="__PUBLIC__/index/images/down-pic_03.png">
-							</a>
-						</div>
-						<p>高举邓小平伟大理论</p>
-						<div class="dowb-btn"><a href="#">下载</a></div>
-					</li>
-					<li>
-						<div class="down-pic">
-							<a href="#">
-								<img src="__PUBLIC__/index/images/down-pic_05.png">
-							</a>
-						</div>
-						<p>高举邓小平伟大理论</p>
-						<div class="dowb-btn"><a href="#">下载</a></div>
-					</li>
-					<li>
-						<div class="down-pic">
-							<a href="#">
-								<img src="__PUBLIC__/index/images/down-pic_07.png">
-							</a>
-						</div>
-						<p>高举邓小平伟大理论</p>
-						<div class="dowb-btn"><a href="#">下载</a></div>
-					</li>
-					<li>
-						<div class="down-pic">
-							<a href="#">
-								<img src="__PUBLIC__/index/images/down-pic_09.png">
-							</a>
-						</div>
-						<p>高举邓小平伟大理论</p>
-						<div class="dowb-btn"><a href="#">下载</a></div>
-					</li>
-					<li>
-						<div class="down-pic">
-							<a href="#">
-								<img src="__PUBLIC__/index/images/down-pic_03.png">
-							</a>
-						</div>
-						<p>高举邓小平伟大理论</p>
-						<div class="dowb-btn"><a href="#">下载</a></div>
-					</li>
-					<li>
-						<div class="down-pic">
-							<a href="#">
-								<img src="__PUBLIC__/index/images/down-pic_05.png">
-							</a>
-						</div>
-						<p>高举邓小平伟大理论</p>
-						<div class="dowb-btn"><a href="#">下载</a></div>
-					</li>
-					<li>
-						<div class="down-pic">
-							<a href="#">
-								<img src="__PUBLIC__/index/images/down-pic_07.png">
-							</a>
-						</div>
-						<p>高举邓小平伟大理论</p>
-						<div class="dowb-btn"><a href="#">下载</a></div>
-					</li>
-					<li>
-						<div class="down-pic">
-							<a href="#">
-								<img src="__PUBLIC__/index/images/down-pic_09.png">
-							</a>
-						</div>
-						<p>高举邓小平伟大理论</p>
-						<div class="dowb-btn"><a href="#">下载</a></div>
-					</li> -->
 				</ul>
 				
-			</div><!--down-right end-->
+			</div> --><!--down-right end-->
 			
 			
 			

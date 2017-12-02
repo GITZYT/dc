@@ -54,11 +54,21 @@
 							<tr>
 								<td class="x3 text-right line-height"><span>分类：</span></td>
 								<td class="x9">
-									<select name="type"　class="input input-auto">
+									<!-- <select name="type"　class="input input-auto">
 										<option value=3 <if condition="$cat.type eq 3">selected="selected"</if>>PPT</option>
 										<option value=1 <if condition="$cat.type eq 1">selected="selected"</if>>Excel</option>
 										<option value=2 <if condition="$cat.type eq 2">selected="selected"</if>>Word</option>
-									</select>
+									</select> -->
+									<select name="type" class="input input-auto">  
+							          <!--   <option value="0">顶级分类</option>   -->
+							            <volist name="row" id="val">  
+						                <option value="{$val.id}" 
+						                <if condition="$cat.type eq $val['id']">selected="selected"
+										</if>
+						                
+						                >{$val['html']}{$val.name}</option>  
+							            </volist>  
+							        </select>  
 								
 								</td>
 							</tr>

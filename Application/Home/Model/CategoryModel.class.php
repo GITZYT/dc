@@ -18,6 +18,7 @@ class CategoryModel extends Model {
      */
     protected $_validate = array(
         array('name', 'require', '类别名称不能为空！'), //默认情况下用正则进行验证
+        array('level', 'require', '级别不能为空！'), //默认情况下用正则进行验证
         array('name', '', '该类别已被添加！', 0, 'unique', 1), // 在新增的时候验证name字段是否唯一
        );
 
@@ -29,4 +30,9 @@ class CategoryModel extends Model {
         array('isuse', 0), // isuse 0关闭 1启用  新增时 默认0
     );
  
+
+  
+   
+    
+    
 }

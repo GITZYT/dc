@@ -2,10 +2,30 @@
 namespace Home\Controller\Index;
 use Think\Controller;
 class IndexController extends Controller {
+    
     public function index(){
+        //左侧分类
+        //树形分类
+        $cat=D('category');
+        $field = array('id','name','pid','level');
+        $row = $cat->allCategory($field );
+        //生成无限极分类
+        $list=$cat->tree($row);
+        $this->assign('row',$list);
+        $this->display("Index/download");
+    }
+    
+    public function flist(){
         
-        $username=session('index_username');
-        $this->assign("username",$username);
+        $index_username=session('index_username');
+        $admin_username=session('username');
+        if($index_username){
+            $this->assign("username",$index_username);
+        }
+        if($admin_username){
+            $this->assign("username",$admin_username);
+        }
+      
         
         $item=$_GET['item'];//1我的文件标识 2模板文件
         
@@ -32,13 +52,14 @@ class IndexController extends Controller {
         $this->page=$p->show();
         $this->assign("list",$list);
         
-        
+     
         
         if($item==1){
             $this->assign("item",$item);
             $this->display("Index/file");
         }else {
-            $this->display("Index/download");
+            $this->display("Index/framedownload");
+//             $this->display("Index/download");
         }
       
     }
