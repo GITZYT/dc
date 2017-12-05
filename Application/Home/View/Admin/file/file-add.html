@@ -38,6 +38,7 @@
 			    <div class="table-responsive">
 				    <table class="table notableborder">
 						<tbody>
+							<if condition="$flag neq 3">
 							<tr>
 								<td class="x3 text-right line-height"><span>标题：</span></td>
 								<td class="x9"><input type="text" name="title" value="{$cat.title}" class="input input-auto" placeholder="这里输入标题" /></td>
@@ -97,6 +98,7 @@
 								    <div class="float-left margin-left text-red">建议尺寸：200px X 200px</div>
 								</td>
 							</tr>
+							
 							<tr>
 								<td class="x3 text-right line-height"><span>上传文件：</span></td>
 								<td class="x9">
@@ -106,6 +108,33 @@
 									</notempty>
 								</td>
 							</tr>
+							 <else/>
+							 <tr>
+								<td class="x3 text-right line-height"><span>标题：</span></td>
+								<td class="x9"><input type="text" name="title" value="{$cat.title}" class="input input-auto" placeholder="这里输入标题" /></td>
+							</tr>
+							 <tr>
+								<td class="x3 text-right line-height"><span>分类：</span></td>
+								<td class="x9">
+									<select name="type"　class="input input-auto">
+										<option value=3 <if condition="$cat.type eq 3">selected="selected"</if>>PPT</option>
+										<option value=1 <if condition="$cat.type eq 1">selected="selected"</if>>Excel</option>
+										<option value=2 <if condition="$cat.type eq 2">selected="selected"</if>>Word</option>
+									</select>
+								</td>
+							</tr>
+							 <tr>
+								<td class="x3 text-right line-height"><span>上传文件：</span></td>
+								<td class="x9">
+									<input onchange="delfi()" type="file" name="fileurl" class="input input-auto" /><span id="filename">{$cat.fileurl}</span>
+									<notempty name="cat">
+									<input type="hidden" name="fileurl" value="{$cat.fileurl}" />
+									</notempty>
+								</td>
+							</tr>
+							 
+							</if>
+							
 							<tr>
 								<td class="x3 text-right line-height"></td>
 								<td class="x9 text-left">

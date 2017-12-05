@@ -1,3 +1,4 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/index/css/pc-reset.css" />
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/index/css/master.css" />
 <style>
@@ -17,7 +18,23 @@ body{background: #e2f4ff;}
 							</a>
 						</div>
 						<p>{$cat.title}</p>
-						<div class="dowb-btn"><a href="__UPLOAD__/{$cat.picurl}" target="_blank">下载</a></div>
+					
+						
+						<div class="dowb-btn">
+						
+							<empty name="cat.fileurl">
+						<a href="javascript:alert('没有文件！');" target="_blank" >下载</a>
+						<else /> 
+						<if condition="cat.type eq 1" >
+						<a href="__UPLOAD__/{$cat.fileurl}" target="_blank" >下载</a>
+						<else/>
+						<a href="__APP__/Home/Index/Index/force_download?url={$cat.fileurl}" target="_blank" >下载</a>
+						</if>
+						
+						</empty> 
+						
+						</div>
+<!-- 						<div class="dowb-btn"><a href="__UPLOAD__/{$cat.picurl}" target="_blank">下载</a></div> -->
 					</li>
 					</volist>
 				</ul>

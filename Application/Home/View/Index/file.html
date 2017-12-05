@@ -61,7 +61,13 @@
 						<empty name="cat.fileurl">
 						<a href="javascript:notice();" target="_blank" style="margin: 0 64px;">下载</a>
 						<else /> 
+						<if condition="cat.type eq 1" >
 						<a href="__UPLOAD__/{$cat.fileurl}" target="_blank" style="margin: 0 64px;">下载</a>
+						<else/>
+						<a href="__APP__/Home/Index/Index/force_download?url={$cat.fileurl}" target="_blank" style="margin: 0 64px;">下载</a>
+						</if>
+						
+<!-- 						<a href="__UPLOAD__/{$cat.fileurl}" target="_blank" style="margin: 0 64px;">下载</a> -->
 						</empty> 
 						<!-- <a href="#">打开文件夹</a> -->
 					</span>
