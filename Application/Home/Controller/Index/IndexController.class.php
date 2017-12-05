@@ -4,6 +4,14 @@ use Think\Controller;
 class IndexController extends Controller {
     
     public function index(){
+          $index_username=session('index_username');
+         $admin_username=session('username');
+         if($index_username){
+         $this->assign("username",$index_username);
+         }
+         if($admin_username){
+         $this->assign("username",$admin_username);
+         } 
         //左侧分类
         //树形分类
         $cat=D('category');
@@ -17,14 +25,14 @@ class IndexController extends Controller {
     
     public function flist(){
         
-        $index_username=session('index_username');
+         $index_username=session('index_username');
         $admin_username=session('username');
         if($index_username){
             $this->assign("username",$index_username);
         }
         if($admin_username){
             $this->assign("username",$admin_username);
-        }
+        } 
       
         
         $item=$_GET['item'];//1我的文件标识 2模板文件

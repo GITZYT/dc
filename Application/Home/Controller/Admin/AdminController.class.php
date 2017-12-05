@@ -237,7 +237,7 @@ class AdminController extends Controller {
                 if ($id = empty($_POST['id'])?$cat->add($data):$cat->save($data)) {
                      
                     if($data['flag']==3){
-                        $this->success('保存成功', U('Home/Index/Index/index?item=1'), 2);
+                        $this->success('保存成功', U('Home/Index/Index/flist?item=1'), 2);
                     }else{
                         $this->success('保存成功', U('Home/Admin/Admin/filelist?flag='.$data['flag']), 2);
                     }

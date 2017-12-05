@@ -18,7 +18,7 @@
 	    <script type="text/javascript" src="/dc/Public/Js/jedate/jedate.js" ></script>
 	</head>
 	<body>
-		<form id="formid" method="POST" action="/dc/Home/Admin/Admin/addfile?id=3&amp;flag=1" enctype="multipart/form-data" class="ttb">
+		<form id="formid" method="POST" action="/dc/Home/Admin/Admin/addfile?flag=3" enctype="multipart/form-data" class="ttb">
 		<input type="hidden" name="id" value="<?php echo ($cat["id"]); ?>" />
 		<input type="hidden" name="flag" value="<?php echo ($flag); ?>" />
 		  	<div class="panel admin-panel">
@@ -50,11 +50,18 @@
 							<tr>
 								<td class="x3 text-right line-height"><span>分类：</span></td>
 								<td class="x9">
-									<select name="type"　class="input input-auto">
+									<!-- <select name="type"　class="input input-auto">
 										<option value=3 <?php if($cat["type"] == 3): ?>selected="selected"<?php endif; ?>>PPT</option>
 										<option value=1 <?php if($cat["type"] == 1): ?>selected="selected"<?php endif; ?>>Excel</option>
 										<option value=2 <?php if($cat["type"] == 2): ?>selected="selected"<?php endif; ?>>Word</option>
-									</select>
+									</select> -->
+									<select name="type" class="input input-auto">  
+							          <!--   <option value="0">顶级分类</option>   -->
+							            <?php if(is_array($row)): $i = 0; $__LIST__ = $row;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$val): $mod = ($i % 2 );++$i;?><option value="<?php echo ($val["id"]); ?>" 
+						                <?php if($cat["type"] == $val['id']): ?>selected="selected"<?php endif; ?>
+						                
+						                ><?php echo ($val['html']); echo ($val["name"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>  
+							        </select>  
 								
 								</td>
 							</tr>

@@ -14,13 +14,40 @@
 	    <script type="text/javascript" src="/dc/Public/Js/jedate/jedate.js" ></script>
 	</head>
 	<body>
-		<form id="formid" method="POST" action="/dc/Home/Admin/Admin/addcategory" class="ttb">
+<!-- 	<tr>  
+    <td class="left"><label>上级分类：</label></td>  
+    <td>  
+        <select name="pid">  
+            <option value="0">顶级分类</option>  
+            <?php if(is_array($row)): $i = 0; $__LIST__ = $row;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$val): $mod = ($i % 2 );++$i;?><option value="<?php echo ($val["id"]); ?>"><?php echo ($val['html']); echo ($val["name"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>  
+        </select>  
+    </td>  
+</tr>   -->
+
+
+		<form id="formid" method="POST" action="/dc/Home/Admin/Admin/addcategory?id=24" class="ttb">
 		<input type="hidden" name="id" value="<?php echo ($cat["id"]); ?>" />
 		  	<div class="panel admin-panel">
 			    <div class="panel-head"><strong class="icon-reorder"> <?php echo ($cat?"编辑分类":"新增分类"); ?></strong></div>
 			    <div class="table-responsive">
 				    <table class="table notableborder">
 						<tbody>
+							<tr>
+								<td class="x3 text-right line-height"><span>父级：</span></td>
+								<td class="x9">
+									 <select name="pid" class="input input-auto">  
+							            <option value="0">顶级分类</option>  
+							            <?php if(is_array($row)): $i = 0; $__LIST__ = $row;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$val): $mod = ($i % 2 );++$i;?><option value="<?php echo ($val["id"]); ?>" 
+						                <?php if($cat["pid"] == $val['id']): ?>selected="selected"<?php endif; ?>
+						                
+						                ><?php echo ($val['html']); echo ($val["name"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>  
+							        </select>  
+								</td>
+							</tr>
+							<tr>
+								<td class="x3 text-right line-height"><span>级别：</span></td>
+								<td class="x9"><input type="text" name="level" value="<?php echo ($cat["level"]); ?>" class="input input-auto" placeholder="这里输入级别" /></td>
+							</tr>
 							<tr>
 								<td class="x3 text-right line-height"><span>类别名称：</span></td>
 								<td class="x9"><input type="text" name="name" value="<?php echo ($cat["name"]); ?>" class="input input-auto" placeholder="这里输入类别名称" /></td>
