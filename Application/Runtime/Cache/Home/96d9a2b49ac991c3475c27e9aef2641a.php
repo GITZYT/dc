@@ -18,7 +18,7 @@
 	    <script type="text/javascript" src="/dc/Public/Js/jedate/jedate.js" ></script>
 	</head>
 	<body>
-		<form id="formid" method="POST" action="/dc/Home/Admin/Admin/addfile?flag=3" enctype="multipart/form-data" class="ttb">
+		<form id="formid" method="POST" action="/dc/Home/Admin/Admin/addfile?flag=1" enctype="multipart/form-data" class="ttb">
 		<input type="hidden" name="id" value="<?php echo ($cat["id"]); ?>" />
 		<input type="hidden" name="flag" value="<?php echo ($flag); ?>" />
 		  	<div class="panel admin-panel">
@@ -34,7 +34,7 @@
 			    <div class="table-responsive">
 				    <table class="table notableborder">
 						<tbody>
-							<tr>
+							<?php if($flag != 3): ?><tr>
 								<td class="x3 text-right line-height"><span>标题：</span></td>
 								<td class="x9"><input type="text" name="title" value="<?php echo ($cat["title"]); ?>" class="input input-auto" placeholder="这里输入标题" /></td>
 							</tr>
@@ -90,6 +90,7 @@
 								    <div class="float-left margin-left text-red">建议尺寸：200px X 200px</div>
 								</td>
 							</tr>
+							
 							<tr>
 								<td class="x3 text-right line-height"><span>上传文件：</span></td>
 								<td class="x9">
@@ -97,6 +98,29 @@
 									<?php if(!empty($cat)): ?><input type="hidden" name="fileurl" value="<?php echo ($cat["fileurl"]); ?>" /><?php endif; ?>
 								</td>
 							</tr>
+							 <?php else: ?>
+							 <tr>
+								<td class="x3 text-right line-height"><span>标题：</span></td>
+								<td class="x9"><input type="text" name="title" value="<?php echo ($cat["title"]); ?>" class="input input-auto" placeholder="这里输入标题" /></td>
+							</tr>
+							 <tr>
+								<td class="x3 text-right line-height"><span>分类：</span></td>
+								<td class="x9">
+									<select name="type"　class="input input-auto">
+										<option value=3 <?php if($cat["type"] == 3): ?>selected="selected"<?php endif; ?>>PPT</option>
+										<option value=1 <?php if($cat["type"] == 1): ?>selected="selected"<?php endif; ?>>Excel</option>
+										<option value=2 <?php if($cat["type"] == 2): ?>selected="selected"<?php endif; ?>>Word</option>
+									</select>
+								</td>
+							</tr>
+							 <tr>
+								<td class="x3 text-right line-height"><span>上传文件：</span></td>
+								<td class="x9">
+									<input onchange="delfi()" type="file" name="fileurl" class="input input-auto" /><span id="filename"><?php echo ($cat["fileurl"]); ?></span>
+									<?php if(!empty($cat)): ?><input type="hidden" name="fileurl" value="<?php echo ($cat["fileurl"]); ?>" /><?php endif; ?>
+								</td>
+							</tr><?php endif; ?>
+							
 							<tr>
 								<td class="x3 text-right line-height"></td>
 								<td class="x9 text-left">
