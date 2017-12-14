@@ -24,7 +24,12 @@ class LoginController extends Controller {
             if (!$data = $login->create()) {
                 // 防止输出中文乱码
                 header("Content-type: text/html; charset=utf-8");
-                exit($login->getError());
+                 $res = array(
+                    'status' => false,
+                    'info' => $login->getError(),
+                    'callback' => U('Home/Index/Login/login')
+                );
+                $this->ajaxReturn($res,'JSON');
             }
 
             // 组合查询条件
@@ -40,12 +45,21 @@ class LoginController extends Controller {
                  session('index_logintime', time());   // 当前登陆时间
 
                 // 更新用户登录信息
-                //$where['id'] = session('uid');
-               // M('users')->where($where)->setInc('loginnum');   // 登录次数加 1
-                //M('users')->where($where)->save($data);   // 更新登录时间和登录ip
-                $this->success('登录成功,正跳转至系统首页...', U('Home/Index/Index/index'));
+                //$this->success('登录成功,正跳转至系统首页...', U('Home/Index/Index/index'));
+                $res = array(
+                    'status' => true,
+                    'info' => 'ok',
+                    'callback' => U('Home/Index/Index/index')
+                );
+                $this->ajaxReturn($res,'JSON');
             } else {
-                $this->error('登录失败,用户名或密码不正确!');
+                //$this->error('登录失败,用户名或密码不正确!');
+                $res = array(
+                    'status' => false,
+                    'info' => '登录失败,用户名或密码不正确!',
+                    'callback' => U('Home/Index/Login/login')
+                );
+                $this->ajaxReturn($res,'JSON');
             }
         } else {
             $this->display("Index/login");
@@ -91,7 +105,7 @@ class LoginController extends Controller {
         header("Content-type: text/html; charset=utf-8");
         // 清楚所有session
         session(null);
-        redirect(U('Home/Index/Login/login'), 2, '正在退出登录...');
+        redirect(U('Home/Index/Login/login'), 0, '正在退出登录...');
     }
 
     /**

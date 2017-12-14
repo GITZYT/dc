@@ -105,14 +105,16 @@ class AdminController extends Controller {
             //插入数据库
             if ($id = empty($_POST['id'])?$user->add($data):$user->save($data)) {
              
-                $this->success('保存成功', U('Home/Admin/Admin/userlist'), 2);
+//                 $this->success('保存成功', U('Home/Admin/Admin/userlist'), 0);
+                redirect( U('Home/Admin/Admin/userlist'), 0, '');
                 
             } else {
               
-                $this->error('保存失败');
+//                 $this->error('保存失败',U('Home/Admin/Admin/adduser'),0);
+                redirect(U('Home/Admin/Admin/adduser'), 0, '');
             }
         } else {
-            //              redirect(U('Home/adduser'), 1, '页面跳转中...');
+            //              redirect(U('Home/adduser'), 0, '页面跳转中...');
         
             $uid=$_GET['id'];
             if(!empty($uid)){
@@ -149,11 +151,13 @@ class AdminController extends Controller {
             //插入数据库
             if ($id = empty($_POST['id'])?$cat->add($data):$cat->save($data)) {
              
-                $this->success('保存成功', U('Home/Admin/Admin/categorylist'), 2);
+//                 $this->success('保存成功', U('Home/Admin/Admin/categorylist'), 0);
+                redirect(U('Home/Admin/Admin/categorylist'), 0, '');
                 
             } else {
               
-                $this->error('保存失败');
+//                 $this->error('保存失败',U('Home/Admin/Admin/addcategory'), 0);
+                redirect(U('Home/Admin/Admin/addcategory'), 0, '');
             }
         } else {
             //              redirect(U('Home/adduser'), 1, '页面跳转中...');
@@ -237,14 +241,23 @@ class AdminController extends Controller {
                 if ($id = empty($_POST['id'])?$cat->add($data):$cat->save($data)) {
                      
                     if($data['flag']==3){
-                        $this->success('保存成功', U('Home/Index/Index/flist?item=1'), 2);
+                        redirect(U('Home/Index/Index/flist?item=1'), 0, '');
+//                         $this->success('保存成功', U('Home/Index/Index/flist?item=1'), 0);
                     }else{
-                        $this->success('保存成功', U('Home/Admin/Admin/filelist?flag='.$data['flag']), 2);
+                        redirect(U('Home/Admin/Admin/filelist?flag='.$data['flag']), 0, '');
+//                         $this->success('保存成功', U('Home/Admin/Admin/filelist?flag='.$data['flag']), 0);
                     }
                 
                 } else {
                 
-                    $this->error('保存失败');
+                    if($data['flag']==3){
+                        redirect(U('Home/Index/Index/flist?item=1'), 0, '');
+//                         $this->error('保存失败', U('Home/Index/Index/flist?item=1'), 0);
+                    }else{
+//                         $this->error('保存成功', U('Home/Admin/Admin/filelist?flag='.$data['flag']), 0);
+                        redirect(U('Home/Admin/Admin/filelist?flag='.$data['flag']), 0, '');
+                    }
+                   
                 }
             }
             
@@ -349,7 +362,7 @@ class AdminController extends Controller {
             }
         
         }else{
-            redirect( U('Home/Admin/Admin/userlist'), 3, '页面跳转中...');
+            redirect( U('Home/Admin/Admin/userlist'), 0, '页面跳转中...');
         } 
         
     }
