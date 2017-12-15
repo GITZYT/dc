@@ -25,7 +25,7 @@
 </tr>   -->
 
 
-		<form id="formid" method="POST" action="/dc/Home/Admin/Admin/addcategory?id=24" class="ttb">
+		<form id="formid" method="POST" action="/dc/Home/Admin/Admin/addcategory" class="ttb">
 		<input type="hidden" name="id" value="<?php echo ($cat["id"]); ?>" />
 		  	<div class="panel admin-panel">
 			    <div class="panel-head"><strong class="icon-reorder"> <?php echo ($cat?"编辑分类":"新增分类"); ?></strong></div>

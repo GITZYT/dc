@@ -24,7 +24,7 @@
 		  	</div>
 		  	<div class="head-r drop">
 		  		<div class="drop">
-        			<a href="javascropt:void(0)" class="dropdown-toggle">admin&nbsp;<img src="/dc/Public/images/y.jpg"/></a>
+        			<a href="javascropt:void(0)" class="dropdown-toggle"><?php echo ($user["username"]); ?>&nbsp;<img src="/dc/Public/images/y.jpg"/></a>
 					<ul class="drop-menu">
 						<li><a href="/dc/Home/Admin/Login/logout"><span class="icon-power-off margin-right"></span>退出</a> </li>
 					</ul>

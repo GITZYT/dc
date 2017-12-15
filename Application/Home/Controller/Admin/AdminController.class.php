@@ -15,7 +15,13 @@ class AdminController extends Controller {
      */
     public function index()
     {
-       
+        $m=M('users');
+        $userid=session('uid');
+        if(empty($userid)){
+            redirect(U('Home/Admin/Login/login'), 0, '请先登录...');
+        }
+        $user=$m->where('id='.$userid)->find();
+        $this->assign("user",$user);
         $this->display("Admin/index/index");
     }
     /**
@@ -25,7 +31,10 @@ class AdminController extends Controller {
     {
         //用户列表
         $m=M('users');
-       // $userid=session('uid');
+       /*  $userid=session('uid');
+        $user=$m->where('id='.$userid)->find(); */
+        
+        
         $where=array();
         //用户名称
         if(!empty($_POST['username'])){

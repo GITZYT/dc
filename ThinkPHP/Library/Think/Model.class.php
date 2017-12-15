@@ -1910,7 +1910,8 @@ class Model {
     ///custom function
     //查询所有分类信息
     public function allCategory($field='*'){
-        return $this->field($field)->select();
+        $where['isuse']=1;
+        return $this->where($where)->field($field)->select();
     }
 
     //创建组织结构分类树（即无限极分类）

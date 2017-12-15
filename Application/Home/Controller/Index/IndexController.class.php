@@ -41,7 +41,7 @@ class IndexController extends Controller {
         }
     
     
-        $item=$_GET['item'];//1我的文件标识 2模板文件
+        $item=$_GET['item'];//1我的文件 标识 2模板文件
     
     
         //文件列表
@@ -54,18 +54,27 @@ class IndexController extends Controller {
             $where['type']=$type;
             $this->type=$type;
         }
+       
          if($item==1){
             $where['flag']=3;
             $this->item=$item;
         }else{
-            $where['flag'] = array('not in','3');
+           // $where['flag'] = array('not in','3');
+            //红头文件 、普通文件
+            $flag=$_GET['flag'];
+            if(!empty($flag)){
+                $where['flag']=$flag;
+                $this->flag=$flag;
+            }
         }
         //名称
         if(!empty($_POST['title'])){
             $where['title']=array('like','%'.$_POST['title'].'%');//表达式查询
             $this->title=$_POST['title'];
         }
-    
+        //启用的
+        $where['isuse']=1;
+        $where['uid']=session('index_uid');
         $p=getpage($m,$where,8);
         $list=$m->field(true)->where($where)->order('addtime desc')->select();
         //         dump($list);

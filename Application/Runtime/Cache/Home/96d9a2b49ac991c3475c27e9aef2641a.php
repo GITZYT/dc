@@ -18,7 +18,7 @@
 	    <script type="text/javascript" src="/dc/Public/Js/jedate/jedate.js" ></script>
 	</head>
 	<body>
-		<form id="formid" method="POST" action="/dc/Home/Admin/Admin/addfile?flag=2" enctype="multipart/form-data" class="ttb">
+		<form id="formid" method="POST" action="/dc/Home/Admin/Admin/addfile?id=19&amp;flag=1" enctype="multipart/form-data" class="ttb">
 		<input type="hidden" name="id" value="<?php echo ($cat["id"]); ?>" />
 		<input type="hidden" name="flag" value="<?php echo ($flag); ?>" />
 		  	<div class="panel admin-panel">

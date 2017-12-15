@@ -27,7 +27,7 @@ class CategoryModel extends Model {
      */
     protected $_auto = array (
         array('addtime', 'time', 1, 'function'), // 对addtime字段在新增的时候写入当前时间戳
-        array('isuse', 0), // isuse 0关闭 1启用  新增时 默认0
+        array('isuse', 1), // isuse 0关闭 1启用  新增时 默认1
     );
  
 

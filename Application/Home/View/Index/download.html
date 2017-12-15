@@ -54,7 +54,7 @@
 								                	<volist name="row" id="v2">
 								                	<if condition="$v.id eq $v2['pid']">
 								                    <li>
-								                    	<a href="__APP__/Home/Index/Index/flist?type={$v2.id}" target="right">{$v2.name}</a> 
+								                    	<a href="__APP__/Home/Index/Index/flist?type={$v2.id}&flag=1" target="right">{$v2.name}</a> 
 								                    </li>
 								                    </if>
 								                    </volist>
@@ -72,6 +72,47 @@
 					</div><!--down-l-nav end-->
 				
 				</div><!--down-l-part1 end-->
+				<if condition="$user.state eq 1">
+				<div class="down-l-part1">
+					<h2 class="down-left-tit">红头文件</h2>
+				
+					<div class="down-l-nav">
+						<div class="down-l-navall"><i class="fd-arrow fd-arrow-down"></i>全部</div>
+						<div class="tree">
+						<volist name="row" id="val">  
+						    <div class="tree_box">
+						    	<if condition="$val.level eq 0">
+						        <h3><i class="fd-arrow"></i>{$val.name}</h3>
+						        <ul class="tree_one">
+						        	<volist name="row" id="v">
+						        	<if condition="$val.id eq $v['pid']">
+						            <li>
+						                <!-- <h4><a href="__APP__/Home/Index/Index/index?type={$v.id}">{$v.name}</a></h4> -->
+						                <if condition="$v.level eq 1">
+							                 	<h4><i class="fd-arrow"></i>{$v.name}</h4>
+								                <ul class="tree_two">
+								                	<volist name="row" id="v2">
+								                	<if condition="$v.id eq $v2['pid']">
+								                    <li>
+								                    	<a href="__APP__/Home/Index/Index/flist?type={$v2.id}&flag=2" target="right">{$v2.name}</a> 
+								                    </li>
+								                    </if>
+								                    </volist>
+							                   </ul>
+						                </if>
+						            </li>
+						            </if>
+					            	</volist>
+						        </ul>
+					            </if>
+						    </div>
+						   </volist> 
+						</div>
+						
+					</div><!--down-l-nav end-->
+				
+				</div><!--down-l-part1 end-->
+				</if>
 				
 			</div><!--down-left end-->
 			

@@ -36,6 +36,8 @@ class LoginController extends Controller {
             // 组合查询条件
             $where = array();
             $where['username'] = $data['username'];
+            $where['state'] = 1;//红头文件可以登录
+            $where['isuse'] = 1;//用户启用
             $result = $login->where($where)->field('id,username,password')->find();
 
             // 验证用户名 对比 密码
