@@ -30,12 +30,8 @@ class FileModel extends Model {
         array('islock', 1), // islock 0否 1解锁  新增时 默认1
         
         //用户id默认添加
-        
         array("uid","functionuid",3,"callback"),//新增和编辑时添加用户id
-        
-        
       
-        array('uid', 1), // islock 0否 1解锁  新增时 默认1
     );
     
     //用户id

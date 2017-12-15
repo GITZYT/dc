@@ -65,6 +65,8 @@ class IndexController extends Controller {
             if(!empty($flag)){
                 $where['flag']=$flag;
                 $this->flag=$flag;
+            }else{
+                $where['flag'] = array('not in','3');
             }
         }
         //名称
@@ -74,9 +76,13 @@ class IndexController extends Controller {
         }
         //启用的
         $where['isuse']=1;
-        $where['uid']=session('index_uid');
+        $where['uid']=session("index_uid");
         $p=getpage($m,$where,8);
         $list=$m->field(true)->where($where)->order('addtime desc')->select();
+        
+        /*  $sql=$m->getLastSql();
+        dump(session("uid"));
+        dump($sql);  */
         //         dump($list);
         $this->page=$p->show();
         $this->assign("list",$list);
