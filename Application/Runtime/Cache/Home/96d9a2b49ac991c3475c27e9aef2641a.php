@@ -18,7 +18,7 @@
 	    <script type="text/javascript" src="/dc/Public/Js/jedate/jedate.js" ></script>
 	</head>
 	<body>
-		<form id="formid" method="POST" action="/dc/Home/Admin/Admin/addfile?flag=1" enctype="multipart/form-data" class="ttb">
+		<form id="formid" method="POST" action="/dc/Home/Admin/Admin/addfile?flag=2" enctype="multipart/form-data" class="ttb">
 		<input type="hidden" name="id" value="<?php echo ($cat["id"]); ?>" />
 		<input type="hidden" name="flag" value="<?php echo ($flag); ?>" />
 		  	<div class="panel admin-panel">
@@ -74,12 +74,13 @@
 								                    <div class="fileinput-new thumbnail" style="width: 200px;height: auto;max-height:150px;">
 								                        <img id='picImg' style="width: 100%;height: auto;max-height: 140px;" src="/dc/Public/Uploads/<?php echo ($cat["picurl"]); ?>" alt="" />
 								                    </div>
+								                    <input type="hidden" id="pccccc" value="<?php echo ($cat["picurl"]); ?>"/>
 								                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
 								                    <div>
 								                        <span class="btn btn-primary btn-file">
 								                            <span class="fileinput-new button border-main">选择文件</span>
 								                            <span class="fileinput-exists button border-green">换一张</span>
-								                            <input type="file" name="picurl" id="picurl" accept="image/gif,image/jpeg,image/x-png"/>
+								                            <input type="file" name="picurl" id="picurl" accept="image/gif,image/jpeg,image/x-png" class="file"/><span style="color:red;" class="mark"></span>
 								                        </span>
 								                        <a href="javascript:;" class="fileinput-exists button border-red" data-dismiss="fileinput">移除</a>
 								                    </div>
@@ -94,7 +95,7 @@
 							<tr>
 								<td class="x3 text-right line-height"><span>上传文件：</span></td>
 								<td class="x9">
-									<input onchange="delfi()" type="file" name="fileurl" class="input input-auto" /><span id="filename"><?php echo ($cat["fileurl"]); ?></span>
+									<input onchange="delfi()" type="file" name="fileurl" class="input input-auto" class="file"/><span style="color:red;" class="mark"></span><span id="filename"><?php echo ($cat["fileurl"]); ?></span>
 									<?php if(!empty($cat)): ?><input type="hidden" name="fileurl" value="<?php echo ($cat["fileurl"]); ?>" /><?php endif; ?>
 								</td>
 							</tr>
@@ -116,7 +117,7 @@
 							 <tr>
 								<td class="x3 text-right line-height"><span>上传文件：</span></td>
 								<td class="x9">
-									<input onchange="delfi()" type="file" name="fileurl" class="input input-auto" /><span id="filename"><?php echo ($cat["fileurl"]); ?></span>
+									<input onchange="delfi()" type="file" name="fileurl" class="input input-auto" class="file" id="file"/><span style="color:red;" class="mark"></span><span id="filename"><?php echo ($cat["fileurl"]); ?></span>
 									<?php if(!empty($cat)): ?><input type="hidden" name="fileurl" value="<?php echo ($cat["fileurl"]); ?>" /><?php endif; ?>
 								</td>
 							</tr><?php endif; ?>
@@ -336,7 +337,17 @@
 		
 		//保存
 		function save(){
-			$("#formid").submit();
+			var filename=$("#filename").html();
+			var pic=$("#pccccc").val();
+			var file=$(".file").val();
+			var ffile=$("#file").val();
+			
+			if(ffile||file||filename||pic){
+				$("#formid").submit();
+			}else{
+				$(".mark").html("请先上传文件！");
+			}
+			
 		}
 		
 	

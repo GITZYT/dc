@@ -12,6 +12,12 @@ class IndexController extends Controller {
          if($admin_username){
          $this->assign("username",$admin_username);
          } 
+         //用户信息
+         $user=M('users');
+         $where['id']=session("index_uid");
+         $data=$user->where($where)->find();
+         
+         
         //左侧分类
         //树形分类
         $cat=D('category');
@@ -19,7 +25,7 @@ class IndexController extends Controller {
         $row = $cat->allCategory($field );
         //生成无限极分类
         $list=$cat->tree($row);
-        $this->assign('row',$list);
+        $this->assign('row',$list)->assign('user',$data);
         $this->display("Index/download");
     }
 
